@@ -1,11 +1,11 @@
 parameter targetStructure.
-lock origin to - sun:position.
+lock origin to - ship:body:position.
 
 
 function getAngle{
-    set erg to vectorAngle(origin + ship:body:position, origin + targetStructure:position).
+    set erg to vectorAngle(origin + ship:position, origin + targetStructure:position).
     wait 0.01.
-    if erg - vectorAngle(origin + ship:body:position, origin + targetStructure:position) > 0 {
+    if erg - vectorAngle(origin + ship:position, origin + targetStructure:position) > 0 {
         set erg to -erg.
     }
     return erg.
@@ -13,16 +13,23 @@ function getAngle{
 
 
 lock angle to getAngle().
+print angle.
+
+
 function getPeriod{
     parameter semiMajor.
-    return 2 * CONSTANT:PI * sqrt((semiMajor * semiMajor * semiMajor) / sun:mu).
+    set erg to 2 * CONSTANT:PI * sqrt((semiMajor * semiMajor * semiMajor) / ship:body:mu).
+    print 2 * CONSTANT:PI.
+    print  semiMajor * semiMajor * semiMajor.
+    print (semiMajor * semiMajor * semiMajor) / ship:body:mu.
+    print erg.
+    return erg.
 }.
 
-set tTarget to targetStructure:obt:period.
-set tTransfer to getPeriod((ship:body:periapsis + targetStructure:apoapsis) / 2).
 
-print tTarget.
-print tTransfer.
+set tTarget to targetStructure:obt:period.
+set tTransfer to getPeriod((75000 + 12000000)/2).
+set tTransfer to 183600.
 
 
 SET TRANSFERANGLE TO MOD(180 - ((tTransfer/2) / tTarget) * 360, 180).

@@ -39,8 +39,8 @@ function safeStage {
 declare function ShipTWR
 {
     set mth to SHIP:MAXTHRUST.
-    set r to (SHIP:ALTITUDE+SHIP:BODY:RADIUS).
-    set w to SHIP:MASS * SHIP:BODY:MU / r / r.
+    set radius to SHIP:ALTITUDE+SHIP:BODY:RADIUS.
+    set w to SHIP:MASS * SHIP:BODY:MU / radius / radius.
     return mth/w.
 }
 

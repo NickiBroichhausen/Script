@@ -1,6 +1,12 @@
 parameter targetStructure.
 lock origin to - sun:position.
 
+if targetStructure:obt:eccentricity > 0.1 {
+    print "target eccentricity to high".
+}.
+if targetStructure:obt:inclination > 1 {
+    print "target inclanation to high".
+}.
 
 function getAngle{
     set erg to vectorAngle(origin + ship:body:position, origin + targetStructure:position).
@@ -25,7 +31,8 @@ print tTarget.
 print tTransfer.
 
 
-SET TRANSFERANGLE TO MOD(180 - ((tTransfer/2) / tTarget) * 360, 180).
+// SET TRANSFERANGLE TO MOD(180 - ((tTransfer/2) / tTarget) * 360, 180).
+SET TRANSFERANGLE TO (tTransfer/2) / tTarget * 360 - 180.
 
 lock steering to prograde.
 until angle - TRANSFERANGLE < 1 and angle - TRANSFERANGLE > -1{

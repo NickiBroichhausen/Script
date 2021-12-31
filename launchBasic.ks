@@ -65,10 +65,13 @@ function liftOff {
 }
 
 function gravityTurn {
+	wait 1.
+	set warp to 1.
 	until ship:orbit:Apoapsis > targetAltitude {
 	   set dir to (90 - (ship:orbit:Apoapsis/targetAltitude) * 90).
 	
 	}.
+	set warp to 0.
 	set thrust TO 0.0.
 
 	PRINT " ".
@@ -76,14 +79,19 @@ function gravityTurn {
 }
 
 function circularize {
+	wait 1.
+	set warp to 3.
 	PRINT " ".
 	PRINT "PREPARING CIRCULARIZATION...".
 
 	until eta:apoapsis < 20 / ShipTWR().{
-
 	}.
-
+	set warp to 0.
+	wait 1.
 	set thrust TO 1.0.
+	wait 0.5.
+	set mapView to true.
+	set warp to 2.
 	until (ship:orbit:apoapsis > 1000 + targetAltitude OR ship:orbit:eccentricity < 0.001) AND ship:orbit:periapsis > safeAltitude{
 	   if ship:verticalspeed < 0 {
 		  set dir to (-ship:verticalspeed * 3).
@@ -93,7 +101,8 @@ function circularize {
 	   }
 	}.
 	set thrust TO 0.0.
-
+	set warp to 0.
+	set mapView to false.
 	PRINT " ".
 	PRINT "CIRCULARIZATION BURN COMPLETE".
 }

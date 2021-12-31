@@ -66,7 +66,7 @@ function liftOff {
 
 function gravityTurn {
 	wait 1.
-	set warp to 1.
+	set warp to 2.
 	until ship:orbit:Apoapsis > targetAltitude {
 	   set dir to (90 - (ship:orbit:Apoapsis/targetAltitude) * 90).
 	

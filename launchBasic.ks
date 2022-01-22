@@ -66,7 +66,7 @@ function liftOff {
 
 function gravityTurn {
 	wait 1.
-	set warp to 2.
+	set warp to 1.
 	until ship:orbit:Apoapsis > targetAltitude {
 	   set dir to (90 - (ship:orbit:Apoapsis/targetAltitude) * 90).
 	
@@ -87,7 +87,7 @@ function circularize {
 	until eta:apoapsis < 20 / ShipTWR().{
 	}.
 	set warp to 0.
-	wait 1.
+	wait 0.5.
 	set thrust TO 1.0.
 	wait 0.5.
 	set mapView to true.

@@ -70,11 +70,4 @@ until angle - TRANSFERANGLE < 1 and angle - TRANSFERANGLE > -1{
     print " - " + TRANSFERANGLE at (40, 2).
 }.
 set kuniverse:timewarp:rate to 0.
-// lock throttle to 1.
-
-print "fire".
-
-// until targetStructure:apoapsis - ship:orbit:apoapsis < 100000{
-// print ship:orbit:periapsis.
-// }.
-// lock throttle to 0.
+print "TRANSFER WINDOW REACHED".

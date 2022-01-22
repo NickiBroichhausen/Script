@@ -22,18 +22,34 @@ print "transfer from: " + startStructure + " to: " + targetStructure + " around:
 
 lock origin to - commonBody:position.
 
+print " ".
+
 if targetStructure:obt:eccentricity > 0.1 {
-    print "target eccentricity to high".
+    print "target eccentricity to high !!!!!!!!!!!!!".
 }.
 if targetStructure:obt:inclination > 1 {
-    print "target inclanation to high".
+    print "target inclanation to high !!!!!!!!!!!!!".
 }.
 if startStructure:obt:eccentricity > 0.1 {
-    print "startStructure eccentricity to high".
+    print "startStructure eccentricity to high !!!!!!!!!!!!!".
 }.
 if startStructure:obt:inclination > 1 {
-    print "startStructure inclanation to high".
+    print "startStructure inclanation to high !!!!!!!!!!!!!".
 }.
+
+print " ".
+print "Transfer starting".
+print "5".
+wait 1.
+print "4".
+wait 1.
+print "3".
+wait 1.
+print "2".
+wait 1.
+print "1".
+wait 1.
+clearScreen.
 
 function getAngle{
     set erg to vectorAngle(origin + startStructure:position, origin + targetStructure:position).
@@ -64,10 +80,13 @@ SET TRANSFERANGLE TO (tTransfer/2) / tTarget * 360 - 180.
 
 lock steering to prograde.
 
-set kuniverse:timewarp:rate to 1000.
-until angle - TRANSFERANGLE < 1 and angle - TRANSFERANGLE > -1{
-    print angle  at (40, 1).
-    print " - " + TRANSFERANGLE at (40, 2).
+
+lock diff to angle - TRANSFERANGLE.
+until diff < 1 and diff > -1{
+    print angle  at (35, 1).
+    print " - " + TRANSFERANGLE at (35, 2).
+    print diff at (35, 3).
+    set kuniverse:timewarp:rate to abs(round(diff)).
 }.
 set kuniverse:timewarp:rate to 0.
 print "TRANSFER WINDOW REACHED".

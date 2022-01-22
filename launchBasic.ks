@@ -135,7 +135,7 @@ function startSequence{
 
 
 
-when ship:altitude > 50000 then {
+when ship:altitude >  ship:body:atm:height * 5 / 7  then {
 	PRINT " ".
 	print "FAIRING DEPLOY".
 	for part in ship:parts {

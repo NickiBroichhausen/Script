@@ -6,7 +6,7 @@ clearscreen.
 
 set commonBody to startStructure:body.
 set targetStructureParam to targetStructure.
-until startStructure:body = targetStructure:body{
+until startStructure:body = targetStructure:body{                           //body not possible???
     set targetStructure to targetStructureParam.
     until  targetStructure:body = commonBody or targetStructure:body = sun{
         set targetStructure to targetStructure:body.

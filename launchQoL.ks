@@ -119,14 +119,14 @@ function startSequence{
 
 	wait 3.
 
-	// SET antennaList to SHIP:MODULESNAMED("ModuleDeployableAntenna").
-	// FOR eachAntenna IN antennaList { 
-	// 	if eachAntenna:hasevent("extend antenna"){
-	// 		eachAntenna:DOEVENT("extend antenna"). 
-	// 	}
-	// }
-	// Panels On.
-	// RADIATORS ON.
+	SET antennaList to SHIP:MODULESNAMED("ModuleDeployableAntenna").
+	FOR eachAntenna IN antennaList { 
+		if eachAntenna:hasevent("extend antenna"){
+			eachAntenna:DOEVENT("extend antenna"). 
+		}
+	}
+	Panels On.
+	RADIATORS ON.
 
 	SET SHIP:CONTROL:PILOTMAINTHROTTLE TO 0.
 	clearscreen.
@@ -135,18 +135,18 @@ function startSequence{
 
 
 
-// when ship:altitude >  ship:body:atm:height * 5 / 7  then {
-// 	PRINT " ".
-// 	print "FAIRING DEPLOY".
-// 	for part in ship:parts {
-// 	   if part:hasmodule("moduleproceduralfairing") {
-// 		  local fairing is part:getmodule("moduleproceduralfairing").
-// 		  if fairing:hasevent("deploy") {
-// 			  fairing:doevent("deploy").
-// 		  }
-// 	   }
-// 	}
-// }.
+when ship:altitude >  ship:body:atm:height * 5 / 7  then {
+	PRINT " ".
+	print "FAIRING DEPLOY".
+	for part in ship:parts {
+	   if part:hasmodule("moduleproceduralfairing") {
+		  local fairing is part:getmodule("moduleproceduralfairing").
+		  if fairing:hasevent("deploy") {
+			  fairing:doevent("deploy").
+		  }
+	   }
+	}
+}.
 
 	
 when ship:maxthrust < oldThrust OR oldThrust = 0 then {   

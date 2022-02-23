@@ -16,7 +16,7 @@ for part in plist{
 if onPad {
    print"Launch sequenz initiated...".
    wait 1.
-   copyPath("0:/launchQol.ks", "").
+   copyPath("0:/launchBasic.ks", "Qol").
    runpath("launchBasic.ks").
 }
 

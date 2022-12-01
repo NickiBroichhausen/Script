@@ -16,8 +16,8 @@ for part in plist{
 if onPad {
    print"Launch sequenz initiated...".
    wait 1.
-   copyPath("0:/launchBasic.ks", "basic").
-   runpath("launchBasic.ks").
+   copyPath("0:/launchBasic.ks", "").
+   runpath("launchBasic.ks", "basic").
 }
 
 print "boot complete".

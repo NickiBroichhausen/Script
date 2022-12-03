@@ -71,11 +71,11 @@ function gravityTurn {
 	set warp to 1.
 	until ship:orbit:Apoapsis > targetAltitude {
 	   set dir to (90 - (ship:orbit:Apoapsis/targetAltitude) * 90).
-	
 	}.
+	set dir to 0.
 	set warp to 0.
 	set thrust TO 0.0.
-
+	wait 2.
 	PRINT " ".
 	PRINT "INSERTION BURN COMPLETE".
 }
